@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vue computed</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+	<hr>
+<div class="container">
+	<div id="app">
+		<input type="text" v-model="fullName">
+		<h4>{{firstName}}</h4>
+		<h4>{{lastName}}</h4>
+	</div>
+</div>
+<script type="text/javascript">
+	var vm=new Vue({
+		el:"#app",
+		data:{
+			firstName:"Aungnaing",
+			lastName:"Htay"
+		},
+		computed:{
+			fullName:{
+				get:function(){
+					return this.firstName+" "+this.lastName;
+				},
+				set:function(name){
+					var name=name.split(' ');
+					this.firstName=name[0];
+					this.lastName=name[name.length-1];
+				}
+			}
+		}
+	});
+</script>
+</body>
+</html>
