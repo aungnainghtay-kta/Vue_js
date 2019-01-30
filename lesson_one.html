@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vue js</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+	<hr>
+<div class="container">
+	<div id="app">
+		{{message}}
+		<h3 v-bind:class="alert">{{message}}</h3>
+		<h3 v-if="show">{{message}}</h3>
+	</div>
+	
+</div>
+<script type="text/javascript">
+	var vm=new Vue({
+		el:"#app",
+		data:{
+			message:"This is first lesson of Mr Aung",
+			alert:'alert alert-danger',
+			show:true,
+		}
+	});
+</script>
+</body>
+</html>
