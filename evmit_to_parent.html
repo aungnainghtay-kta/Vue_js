@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Emit to parent</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+	<hr>
+	<div class="container">
+		<div id="app">
+			<sidebar v-model="value"></sidebar>
+			
+			<br>
+			<input type="text" v-model="value" class="form-control">
+			<label>Parent</label>
+		</div>
+	</div>
+
+<script type="text/javascript">
+	Vue.component('sidebar', {
+		template:
+			'<div><input type="text" v-model="mydata" @input="senddata(mydata)" class="form-control"><label>Vue component</label></div>',
+
+		data(){
+			return{
+				mydata:''
+			}
+		},
+		methods:{
+			senddata(mydata){
+				return this.$emit('input', mydata);
+			}
+		}
+
+	});
+	var vm=new Vue({
+		el:"#app",
+		data:{
+			value:'',
+		}
+	});
+</script>
+
+</body>
+</html>

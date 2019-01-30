@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Props of html</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+	<hr>
+<div class="container">
+	<div id="app">
+		<button class="btn btn-info" @click="click">Click</button>
+		<p>{{value}}</p>
+		<slide :number='value'></slide>
+	</div>
+</div>
+<script type="text/javascript">
+	Vue.component('slide', {
+		template:'<div class="col-lg-4"><ul><ol>Home</ol><ol>About</ol><ol>Contact</ol></ul><a class="btn btn-success">{{number}}</a></div>',
+		props:['number']
+	});
+	var vm=new Vue({
+		el:"#app",
+		data:{
+			value:0,
+		},
+		methods:{
+			click(){
+				this.value+=1;
+			}
+		}
+	});
+</script>
+</body>
+</html>
