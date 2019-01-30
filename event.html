@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Event</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<style type="text/css">
+		.unselected{
+			background-color: #63d4e8;
+		}
+		.select{
+			background-color: #77dd96;
+		}
+	</style>
+</head>
+<body>
+<div class="container">
+	<br>
+	<div id="app">
+			<ul class="list-group">
+			  <li class="list-group-item d-flex justify-content-between align-items-center" v-for="fruit in fruits" @click="click(fruit)" v-bind:class="fruit.select">
+			    {{fruit.name}}
+			    <span class="badge badge-primary badge-pill">{{fruit.price}}</span>
+			  </li>
+			  <li class="list-group-item d-flex justify-content-between align-items-center">Total = {{total}}  </li>
+</ul>
+	</div>
+</div>
+
+<script type="text/javascript">
+	var vm=new Vue({
+		el:"#app",
+		data:{
+			total:0,
+			fruits:[
+			{name:"apple", price:10, clicked:false, select:"unselected"},
+			{name:"orange", price:15, clicked:false, select:"unselected"},
+			{name:"banana", price:30, clicked:false, select:"unselected"}
+			]
+		},
+		methods:{
+			click:function(fruit){
+				if(fruit.clicked){
+					fruit.select="unselected";
+					fruit.clicked=!fruit.clicked;
+					this.total-=fruit.price;
+				}else{
+					fruit.select="select";
+					fruit.clicked=!fruit.clicked;
+					this.total+=fruit.price;
+				}
+				
+			}
+		}
+	});
+</script>
+</body>
+</html>
