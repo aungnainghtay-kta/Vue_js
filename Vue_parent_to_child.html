@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Parent to child</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+	<br>
+<div class="container">
+	<div id="app">
+		<btn @increasenumber="increase"></btn>
+		{{number}}
+		<show :number='number'></show>
+	</div>
+</div>
+<script type="text/javascript">
+	Vue.component('btn', {
+		template:`
+			<div><button class="btn btn-info" @click="pnumber">Click Me</button></div>
+		`,
+		methods:{
+			pnumber(){
+				this.$emit('increasenumber');
+			}
+		}
+	});
+	Vue.component('show', {
+		template:`<div>{{number}}</div>`,
+		props:['number']
+	});
+	var vm=new Vue({
+		el:"#app",
+		data:{
+			number:0,
+		},
+		methods:{
+			increase(){
+				this.number+=1;
+			}
+		}
+	});
+</script>
+</body>
+</html>

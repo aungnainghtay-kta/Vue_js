@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vue js component</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+	<sidebar>
+		<template slot="home">Home</template>
+		<template slot="about">About</template>
+		<template slot="contact">Contact</template>
+	</sidebar>
+</div>
+<script type="text/javascript">
+	Vue.component('sidebar', {
+		template:`<div>
+		<ul>
+			<li><slot name="home"></slot></li>
+			<li><slot name="about"></slot></li>
+			<li><slot name="contact"></slot></li>
+		</ul>
+		</div>`,
+	});
+	var vm=new Vue({
+		el:"#app",
+	});
+</script>
+</body>
+</html>
